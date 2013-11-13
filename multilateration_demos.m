@@ -1,6 +1,6 @@
 
-show_demo_1 = 1;
-show_demo_2 = 1;
+show_demo_1 = 0;
+show_demo_2 = 0;
 show_demo_3 = 1;
 
 
@@ -16,9 +16,13 @@ if show_demo_1 == 1
 
         distances = [k / 20, 3];
         plot_access_points(points, distances);
-        estimate = estimate_location_multilateration(points, distances);
+        estimate = estimate_location_barycentric_interpolation(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
+        
+        estimate = estimate_location_josh(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'c');
 
         M1(k) = getframe;
     end;
@@ -30,9 +34,13 @@ if show_demo_1 == 1
 
         distances = [3, 3 - k / 20];
         plot_access_points(points, distances);
-        estimate = estimate_location_multilateration(points, distances);
+        estimate = estimate_location_barycentric_interpolation(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
+        
+        estimate = estimate_location_josh(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'c');
 
         M1(k + 60) = getframe;
     end;
@@ -44,9 +52,13 @@ if show_demo_1 == 1
 
         distances = [3 - k / 20, 0.5];
         plot_access_points(points, distances);
-        estimate = estimate_location_multilateration(points, distances);
+        estimate = estimate_location_barycentric_interpolation(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
+        
+        estimate = estimate_location_josh(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'c');
 
         M1(k + 110) = getframe;
     end;
@@ -65,9 +77,13 @@ if show_demo_2 == 1
     distances = [2.5, 2.5, 2.5];
     plot_access_points(points, distances);
     
-    estimate = estimate_location_multilateration(points, distances);
+    estimate = estimate_location_barycentric_interpolation(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'r');
+    
+    estimate = estimate_location_josh(points, distances);
+    h = plot(estimate(1), estimate(2), 'o');
+    set(h, 'Color', 'c');
     
     % Pause for a sec at the beginning
     for k = 1:10
@@ -75,7 +91,7 @@ if show_demo_2 == 1
     end;
     
     % Change the location
-    for k = 1:60
+    for k = 1:30
         
         points(1,1) = 2 + k / 20;
         
@@ -85,9 +101,13 @@ if show_demo_2 == 1
         axis([-2, 12, -2, 12]);
         plot_access_points(points, distances);
         
-        estimate = estimate_location_multilateration(points, distances);
+        estimate = estimate_location_barycentric_interpolation(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
+        
+        estimate = estimate_location_josh(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'c');
         
         M2(k + 10) = getframe;
     end;
@@ -102,96 +122,122 @@ if show_demo_2 == 1
         axis([-2, 12, -2, 12]);
         plot_access_points(points, distances);
         
-        estimate = estimate_location_multilateration(points, distances);
+        estimate = estimate_location_barycentric_interpolation(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
         
-        M2(k + 70) = getframe;
+        estimate = estimate_location_josh(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'c');
+        
+        M2(k + 40) = getframe;
     end;
 end;
 
 % Demo 3: Lots of access points
-figure(2);
-clf;
-hold on;
-axis equal;
-axis([-8, 8, -8, 8]);
-
-radius = 4;
-d = 0:pi/4:2*pi - pi/4;
-points = radius * transpose([cos(d); sin(d)]);
-distances = 2.65 * ones(1, 8);
-
-plot_access_points(points, distances);
-
-estimate = estimate_location_multilateration(points, distances);
-h = plot(estimate(1), estimate(2), 'o');
-set(h, 'Color', 'r');
-
-% Pause for a sec at the beginning
-for k = 1:10
-    M3(k) = getframe;
-end;
-
-for k=1:30
+if show_demo_3 == 1
+    figure(3);
     clf;
     hold on;
     axis equal;
     axis([-8, 8, -8, 8]);
-    
-    points(1, 1) = points(1, 1) + 0.1;
+
+    radius = 4;
+    d = 0:pi/4:2*pi - pi/4;
+    points = radius * transpose([cos(d); sin(d)]);
+    distances = 2.65 * ones(1, 8);
+
     plot_access_points(points, distances);
 
-    estimate = estimate_location_multilateration(points, distances);
+    estimate = estimate_location_barycentric_interpolation(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'r');
-    
-    M3(k + 10) = getframe;
-end;
-for k=1:30
-    clf;
-    hold on;
-    axis equal;
-    axis([-8, 8, -8, 8]);
-    
-    points(2, 1) = points(2, 1) + 0.1 * cos(pi/4);
-    points(2, 2) = points(2, 2) + 0.1 * sin(pi/4);
-    plot_access_points(points, distances);
 
-    estimate = estimate_location_multilateration(points, distances);
+    estimate = estimate_location_josh(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
-    set(h, 'Color', 'r');
-    
-    M3(k + 40) = getframe;
-end;
-for k=1:30
-    clf;
-    hold on;
-    axis equal;
-    axis([-8, 8, -8, 8]);
-    
-    points(3, 2) = points(3, 2) + 0.1;
-    plot_access_points(points, distances);
+    set(h, 'Color', 'c');
 
-    estimate = estimate_location_multilateration(points, distances);
-    h = plot(estimate(1), estimate(2), 'o');
-    set(h, 'Color', 'r');
-    
-    M3(k + 10) = getframe;
-end;
-for k=1:30
-    clf;
-    hold on;
-    axis equal;
-    axis([-8, 8, -8, 8]);
-    
-    points(4, 1) = points(4, 1) + 0.1 * cos(3*pi/4);
-    points(4, 2) = points(4, 2) + 0.1 * sin(3*pi/4);
-    plot_access_points(points, distances);
+    % Pause for a sec at the beginning
+    for k = 1:10
+        M3(k) = getframe;
+    end;
 
-    estimate = estimate_location_multilateration(points, distances);
-    h = plot(estimate(1), estimate(2), 'o');
-    set(h, 'Color', 'r');
-    
-    M3(k + 40) = getframe;
+    for k=1:30
+        clf;
+        hold on;
+        axis equal;
+        axis([-8, 8, -8, 8]);
+
+        points(1, 1) = points(1, 1) + 0.1;
+        plot_access_points(points, distances);
+
+        estimate = estimate_location_barycentric_interpolation(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'r');
+
+        estimate = estimate_location_josh(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'c');
+
+        M3(k + 10) = getframe;
+    end;
+    for k=1:30
+        clf;
+        hold on;
+        axis equal;
+        axis([-8, 8, -8, 8]);
+
+        points(2, 1) = points(2, 1) + 0.1 * cos(pi/4);
+        points(2, 2) = points(2, 2) + 0.1 * sin(pi/4);
+        plot_access_points(points, distances);
+
+        estimate = estimate_location_barycentric_interpolation(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'r');
+
+        estimate = estimate_location_josh(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'c');
+
+        M3(k + 40) = getframe;
+    end;
+    for k=1:30
+        clf;
+        hold on;
+        axis equal;
+        axis([-8, 8, -8, 8]);
+
+        points(3, 2) = points(3, 2) + 0.1;
+        plot_access_points(points, distances);
+
+        estimate = estimate_location_barycentric_interpolation(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'r');
+
+        estimate = estimate_location_josh(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'c');
+
+        M3(k + 10) = getframe;
+    end;
+    for k=1:30
+        clf;
+        hold on;
+        axis equal;
+        axis([-8, 8, -8, 8]);
+
+        points(4, 1) = points(4, 1) + 0.1 * cos(3*pi/4);
+        points(4, 2) = points(4, 2) + 0.1 * sin(3*pi/4);
+        plot_access_points(points, distances);
+
+        estimate = estimate_location_barycentric_interpolation(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'r');
+
+        estimate = estimate_location_josh(points, distances);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'c');
+
+        M3(k + 40) = getframe;
+    end;
 end;

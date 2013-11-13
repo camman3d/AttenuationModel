@@ -29,7 +29,7 @@ function point = circle_intersection(center1, radius1, center2, radius2)
     if started == 0
         % Find the points on each circle closest to each other. Do this by
         % drawing a line from the centers
-        delta = center1 - center2;
+        delta = center2 - center1;
         angle = atan2(delta(2), delta(1));
         p1 = center1 + radius1 * [cos(angle), sin(angle)];
         angle = angle + pi;

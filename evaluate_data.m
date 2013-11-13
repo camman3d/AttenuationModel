@@ -21,7 +21,7 @@ function evaluate_data(points, locations, entries)
         set(h, 'Color', 'g');
         
         % Compute the new location and plot it
-        estimate = estimate_location_multilateration(points, distances);
+        estimate = estimate_location_barycentric_interpolation(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
         

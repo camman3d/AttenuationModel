@@ -1,0 +1,33 @@
+% This creates random toy data.
+
+maxX = 30;
+maxY = 30;
+numAPs = 4;
+numEntries = 10;
+
+% Create the access points
+points = zeros(numAPs, 2);
+for i = 1:numAPs
+    points(i, 1) = rand * maxX;
+    points(i, 2) = rand * maxY;
+end;
+
+% locations: Each row is an entry, col 1 is X, col 2 is Y
+locations = zeros(numEntries, 2);
+
+% entries: Each row will be an entry. Columns are the signal strength of the
+% corresponding access point
+entries = zeros(numEntries, numAPs);
+
+% Create the entries with a randomized signal strength
+for i = 1:numEntries
+    locations(i, 1) = rand * maxX;
+    locations(i, 2) = rand * maxY;
+    for j = 1:numAPs
+        
+        % Create the signal strength based on distance with some randomness
+        distance = pdist([locations(i, :); points(j, :)]);
+        power = p_d0 - 10 * beta 
+        entries(i, j) = 
+    end;
+end;

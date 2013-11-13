@@ -1,6 +1,6 @@
 
-show_demo_1 = 0;
-show_demo_2 = 0;
+show_demo_1 = 1;
+show_demo_2 = 1;
 show_demo_3 = 1;
 
 
@@ -16,7 +16,7 @@ if show_demo_1 == 1
 
         distances = [k / 20, 3];
         plot_access_points(points, distances);
-        estimate = estimate_location(points, distances);
+        estimate = estimate_location_multilateration(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
 
@@ -30,7 +30,7 @@ if show_demo_1 == 1
 
         distances = [3, 3 - k / 20];
         plot_access_points(points, distances);
-        estimate = estimate_location(points, distances);
+        estimate = estimate_location_multilateration(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
 
@@ -44,7 +44,7 @@ if show_demo_1 == 1
 
         distances = [3 - k / 20, 0.5];
         plot_access_points(points, distances);
-        estimate = estimate_location(points, distances);
+        estimate = estimate_location_multilateration(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
 
@@ -65,7 +65,7 @@ if show_demo_2 == 1
     distances = [2.5, 2.5, 2.5];
     plot_access_points(points, distances);
     
-    estimate = estimate_location(points, distances);
+    estimate = estimate_location_multilateration(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'r');
     
@@ -85,7 +85,7 @@ if show_demo_2 == 1
         axis([-2, 12, -2, 12]);
         plot_access_points(points, distances);
         
-        estimate = estimate_location(points, distances);
+        estimate = estimate_location_multilateration(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
         
@@ -102,7 +102,7 @@ if show_demo_2 == 1
         axis([-2, 12, -2, 12]);
         plot_access_points(points, distances);
         
-        estimate = estimate_location(points, distances);
+        estimate = estimate_location_multilateration(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
         
@@ -124,7 +124,7 @@ distances = 2.65 * ones(1, 8);
 
 plot_access_points(points, distances);
 
-estimate = estimate_location(points, distances);
+estimate = estimate_location_multilateration(points, distances);
 h = plot(estimate(1), estimate(2), 'o');
 set(h, 'Color', 'r');
 
@@ -142,7 +142,7 @@ for k=1:30
     points(1, 1) = points(1, 1) + 0.1;
     plot_access_points(points, distances);
 
-    estimate = estimate_location(points, distances);
+    estimate = estimate_location_multilateration(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'r');
     
@@ -158,7 +158,7 @@ for k=1:30
     points(2, 2) = points(2, 2) + 0.1 * sin(pi/4);
     plot_access_points(points, distances);
 
-    estimate = estimate_location(points, distances);
+    estimate = estimate_location_multilateration(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'r');
     
@@ -173,7 +173,7 @@ for k=1:30
     points(3, 2) = points(3, 2) + 0.1;
     plot_access_points(points, distances);
 
-    estimate = estimate_location(points, distances);
+    estimate = estimate_location_multilateration(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'r');
     
@@ -189,7 +189,7 @@ for k=1:30
     points(4, 2) = points(4, 2) + 0.1 * sin(3*pi/4);
     plot_access_points(points, distances);
 
-    estimate = estimate_location(points, distances);
+    estimate = estimate_location_multilateration(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'r');
     

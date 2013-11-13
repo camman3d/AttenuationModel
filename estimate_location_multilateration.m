@@ -4,7 +4,7 @@
 % 
 % distances :   This is a vector where each entry is the estimated distance
 %               from the corresponding access point.
-function estimate = estimate_location(points, distances)
+function estimate = estimate_location_multilateration(points, distances)
 
     % Begin by normalizing the distances so that they sum to one and that a
     % weight of 1 means that the estimated location is at that access point

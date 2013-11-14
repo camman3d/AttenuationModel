@@ -1,4 +1,4 @@
-function estimate = estimate_location_josh(points, distances)
+function estimate = estimate_location_ave_min_margin(points, distances)
     
     % Find the point of interest for each pair of points
     pois = [];

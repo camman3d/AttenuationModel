@@ -24,15 +24,15 @@ function estimate = ml_solve(points, distances, plot)
                 h = rectangle('Position', [x - granularity / 2, y - granularity / 2, granularity, granularity]);
 
                 % Figure out a color based on the ssd
-                score = min(ssd, 200) / 200;
-                set(h, 'FaceColor', [1, 1, score], 'EdgeColor', 'w');
+                score = min(ssd, 100) / 100;
+                set(h, 'FaceColor', [1, 1, score], 'EdgeColor', [1, 1, score]);
             end;
         end;
     end;
     
-    if plot
-        % Plot the bounding box and circles
-        plot_access_points(points, distances);
-        rectangle('Position', [minX, minY, maxX - minX, maxY - minY]);
-    end;
+%     if plot
+%         % Plot the bounding box and circles
+%         plot_access_points(points, distances);
+%         rectangle('Position', [minX, minY, maxX - minX, maxY - minY]);
+%     end;
 end

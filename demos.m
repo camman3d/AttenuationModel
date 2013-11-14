@@ -1,6 +1,6 @@
 
-show_demo_1 = 1;
-show_demo_2 = 1;
+show_demo_1 = 0;
+show_demo_2 = 0;
 show_demo_3 = 1;
 
 
@@ -20,7 +20,7 @@ if show_demo_1 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
         
-        estimate = estimate_location_josh(points, distances);
+        estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
@@ -42,7 +42,7 @@ if show_demo_1 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
         
-        estimate = estimate_location_josh(points, distances);
+        estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
@@ -64,7 +64,7 @@ if show_demo_1 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
         
-        estimate = estimate_location_josh(points, distances);
+        estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
@@ -93,7 +93,7 @@ if show_demo_2 == 1
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'r');
     
-    estimate = estimate_location_josh(points, distances);
+    estimate = estimate_location_ave_min_margin(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'c');
     
@@ -121,7 +121,7 @@ if show_demo_2 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
         
-        estimate = estimate_location_josh(points, distances);
+        estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
@@ -146,7 +146,7 @@ if show_demo_2 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
         
-        estimate = estimate_location_josh(points, distances);
+        estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
@@ -177,7 +177,7 @@ if show_demo_3 == 1
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'r');
 
-    estimate = estimate_location_josh(points, distances);
+    estimate = estimate_location_ave_min_margin(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'c');
     
@@ -203,7 +203,7 @@ if show_demo_3 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
 
-        estimate = estimate_location_josh(points, distances);
+        estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
@@ -227,7 +227,7 @@ if show_demo_3 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
 
-        estimate = estimate_location_josh(points, distances);
+        estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
@@ -250,7 +250,7 @@ if show_demo_3 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
 
-        estimate = estimate_location_josh(points, distances);
+        estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
@@ -258,7 +258,7 @@ if show_demo_3 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'g');
 
-        M3(k + 10) = getframe;
+        M3(k + 70) = getframe;
     end;
     for k=1:30
         clf;
@@ -274,7 +274,7 @@ if show_demo_3 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'r');
 
-        estimate = estimate_location_josh(points, distances);
+        estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
@@ -282,6 +282,6 @@ if show_demo_3 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'g');
 
-        M3(k + 40) = getframe;
+        M3(k + 100) = getframe;
     end;
 end;

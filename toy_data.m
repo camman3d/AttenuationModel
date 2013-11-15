@@ -40,6 +40,6 @@ for i = 1:numEntries
         p2 = points(j, :);
         distance = pdist([p1; p2]);
         power = p_d0 - 10 * beta * log(distance);
-        entries(i, j) = power + normrnd(0, 10);
+        entries(i, j) = power + normrnd(0, 4);
     end;
 end;

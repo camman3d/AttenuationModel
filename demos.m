@@ -1,6 +1,6 @@
 
-show_demo_1 = 0;
-show_demo_2 = 0;
+show_demo_1 = 1;
+show_demo_2 = 1;
 show_demo_3 = 1;
 
 

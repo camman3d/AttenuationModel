@@ -13,8 +13,12 @@ if show_demo_1 == 1
         hold on;
         axis equal;
         axis([-2, 12, -2, 12]);
-
         distances = [k / 20, 3];
+                
+        estimate = ml_solve(points, distances, 0);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'g');
+
         plot_access_points(points, distances);
         estimate = estimate_location_barycentric_interpolation(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
@@ -24,10 +28,8 @@ if show_demo_1 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
-        estimate = ml_solve(points, distances, 0);
-        h = plot(estimate(1), estimate(2), 'o');
-        set(h, 'Color', 'g');
-
+        
+        
         M1(k) = getframe;
     end;
     for k = 1:50
@@ -37,6 +39,12 @@ if show_demo_1 == 1
         axis([-2, 12, -2, 12]);
 
         distances = [3, 3 - k / 20];
+        
+        
+        estimate = ml_solve(points, distances, 0);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'g');
+        
         plot_access_points(points, distances);
         estimate = estimate_location_barycentric_interpolation(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
@@ -45,10 +53,6 @@ if show_demo_1 == 1
         estimate = estimate_location_ave_min_margin(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
-        
-        estimate = ml_solve(points, distances, 0);
-        h = plot(estimate(1), estimate(2), 'o');
-        set(h, 'Color', 'g');
 
         M1(k + 60) = getframe;
     end;
@@ -59,6 +63,11 @@ if show_demo_1 == 1
         axis([-2, 12, -2, 12]);
 
         distances = [3 - k / 20, 0.5];
+                
+        estimate = ml_solve(points, distances, 0);
+        h = plot(estimate(1), estimate(2), 'o');
+        set(h, 'Color', 'g');
+
         plot_access_points(points, distances);
         estimate = estimate_location_barycentric_interpolation(points, distances);
         h = plot(estimate(1), estimate(2), 'o');
@@ -68,10 +77,6 @@ if show_demo_1 == 1
         h = plot(estimate(1), estimate(2), 'o');
         set(h, 'Color', 'c');
         
-        estimate = ml_solve(points, distances, 0);
-        h = plot(estimate(1), estimate(2), 'o');
-        set(h, 'Color', 'g');
-
         M1(k + 110) = getframe;
     end;
 end;
@@ -87,6 +92,11 @@ if show_demo_2 == 1
     
     points = [2,2; 6,2; 4,2*sqrt(3) + 2];
     distances = [2.5, 2.5, 2.5];
+    
+    estimate = ml_solve(points, distances, 0);
+    h = plot(estimate(1), estimate(2), 'o');
+    set(h, 'Color', 'g');
+    
     plot_access_points(points, distances);
     
     estimate = estimate_location_barycentric_interpolation(points, distances);
@@ -96,10 +106,6 @@ if show_demo_2 == 1
     estimate = estimate_location_ave_min_margin(points, distances);
     h = plot(estimate(1), estimate(2), 'o');
     set(h, 'Color', 'c');
-    
-    estimate = ml_solve(points, distances, 0);
-    h = plot(estimate(1), estimate(2), 'o');
-    set(h, 'Color', 'g');
     
     % Pause for a sec at the beginning
     for k = 1:10

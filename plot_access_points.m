@@ -12,9 +12,11 @@ function [x_handle, line_handle] = plot_access_points(points, distances)
     % Draw circles (distances from) each endpoints
     d = 0:0.01:2*pi;
     for i=1:size(distances, 2)
-        circum = distances(i);
-        x = circum * cos(d) + points(i, 1);
-        y = circum * sin(d) + points(i, 2);
-        line_handle = plot(x, y, '-');
+        radius = distances(i);
+        if radius ~= 0
+            x = radius * cos(d) + points(i, 1);
+            y = radius * sin(d) + points(i, 2);
+            line_handle = plot(x, y, '-');
+        end;
     end;
 end
